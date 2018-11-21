@@ -1,3 +1,5 @@
 images/*
 !images/.gitkeep 
 .ipynb_checkpoints
+parklots/*
+!parklots/.gitkeep
