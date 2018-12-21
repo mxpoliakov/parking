@@ -41,7 +41,7 @@ def crop(points, filename, out=None, w=135, h=235):
         if out != None:
             cv2.imwrite(out + '/' + base + '+' + str(i) + '.jpg', cropped)
         else:
-            ret.append(cropped)
+            ret.append(cv2.cvtColor(cropped,cv2.COLOR_BGR2RGB))
     
     return ret
 

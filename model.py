@@ -4,7 +4,8 @@ from keras.layers import MaxPooling2D
 from keras.layers import Flatten
 from keras.layers import Dense
 from keras.preprocessing.image import ImageDataGenerator
-from keras.callbacks import EarlyStopping 
+from keras.callbacks import EarlyStopping
+import numpy as np
 
 def train(input, out, rows=235, cols=135, epochs=25):
     model = Sequential()
