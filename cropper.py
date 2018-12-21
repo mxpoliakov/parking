@@ -21,9 +21,13 @@ def read_mapping(mapping_json):
 
     return points
 
+def crop(points, filename, out=None, w=135, h=235):
+    if out != None and not os.path.exists(out) :
+            os.makedirs(out)
 
-def crop(points, filename, out, w=135, h=235):
     img = cv2.imread(filename)
+    ret = []
+    
     for i, parklot in enumerate(points):
         parklot_rect = np.array([[0, 0], [w - 1, 0], [w - 1, h - 1], [0, h - 1]], dtype=np.float32)
 
@@ -34,5 +38,17 @@ def crop(points, filename, out, w=135, h=235):
 
         cropped = cv2.warpPerspective(img, matrix, (w, h))
         base = os.path.splitext(os.path.basename(filename))[0]
+        if out != None:
+            cv2.imwrite(out + '/' + base + '+' + str(i) + '.jpg', cropped)
+        else:
+            ret.append(cropped)
+    
+    return ret
 
-        cv2.imwrite(out + '/' + base + '+' + str(i) + '.jpg', cropped)
+if __name__ == '__main__':
+    points = read_mapping('mapping.json')
+    for filename in glob.glob('images/*'):
+        print(filename)
+        ret = crop(points, filename, out='parklots_all')
+
+   

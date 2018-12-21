@@ -3,5 +3,4 @@ images/*
 .ipynb_checkpoints
 parklots/*
 !parklots/.gitkeep
-model.h5
 model_test.ipynb
