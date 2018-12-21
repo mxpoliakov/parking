@@ -5,3 +5,4 @@ parklots/*
 !parklots/.gitkeep
 model_test.ipynb
 .idea
+.vscode

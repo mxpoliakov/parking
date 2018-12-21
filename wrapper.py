@@ -1,19 +1,12 @@
 from model import predict_one
-from cropper import read_mapping, crop
+from cropper import read_mapping, crop_predict
 from keras.models import load_model
-from matplotlib import pyplot as PLT
 
-
-def wrapper(filename):
-    predictions = {}
+def predict_all(filename):
     model = load_model('model.h5')
     points = read_mapping('mapping.json')
-    ret = crop(points, filename)
-    for i, parklot in enumerate(ret):
-        PLT.imshow(parklot)
-        PLT.show()
-        predictions[i] = predict_one(model, parklot)
-    return predictions
+    return crop_predict(points, filename, predict_one, model)
 
+predictions = predict_all('images/2018-07-13 14_44_54.816.jpg')
 
-wrapper('images/photo5251373246744472076.jpg')
+print(predictions)

@@ -21,34 +21,40 @@ def read_mapping(mapping_json):
 
     return points
 
+def extract_parklot(img, parklot, w, h):
+    parklot_rect = np.array([[0, 0], [w - 1, 0], [w - 1, h - 1], [0, h - 1]], dtype=np.float32)
+
+    if np.linalg.norm(parklot[2] - parklot[3]) > np.linalg.norm(parklot[1] - parklot[2]):
+        parklot = parklot[[1, 2, 3, 0]]
+
+    matrix = cv2.getPerspectiveTransform(parklot, parklot_rect)
+
+    return cv2.warpPerspective(img, matrix, (w, h))
+
 def crop(points, filename, out=None, w=135, h=235):
-    if out != None and not os.path.exists(out) :
+    if not os.path.exists(out) :
             os.makedirs(out)
 
     img = cv2.imread(filename)
-    ret = []
     
     for i, parklot in enumerate(points):
-        parklot_rect = np.array([[0, 0], [w - 1, 0], [w - 1, h - 1], [0, h - 1]], dtype=np.float32)
-
-        if np.linalg.norm(parklot[2] - parklot[3]) > np.linalg.norm(parklot[1] - parklot[2]):
-            parklot = parklot[[1, 2, 3, 0]]
-
-        matrix = cv2.getPerspectiveTransform(parklot, parklot_rect)
-
-        cropped = cv2.warpPerspective(img, matrix, (w, h))
+        cropped = extract_parklot(img, parklot, w, h)
         base = os.path.splitext(os.path.basename(filename))[0]
-        if out != None:
-            cv2.imwrite(out + '/' + base + '+' + str(i) + '.jpg', cropped)
-        else:
-            ret.append(cv2.cvtColor(cropped,cv2.COLOR_BGR2RGB))
+        cv2.imwrite(out + '/' + base + '+' + str(i) + '.jpg', cropped)
+
+def crop_predict(points, filename, predict, *args, w=135, h=235):
+    img = cv2.imread(filename)
+    predictions = {}
     
-    return ret
+    for i, parklot in enumerate(points):
+        cropped = extract_parklot(img, parklot, w, h)
+        predictions[i] = predict(*args, cv2.cvtColor(cropped, cv2.COLOR_BGR2RGB))
+    return predictions
 
 if __name__ == '__main__':
     points = read_mapping('mapping.json')
     for filename in glob.glob('images/*'):
         print(filename)
-        ret = crop(points, filename, out='parklots_all')
+        crop(points, filename, out='parklots_all')
 
    
