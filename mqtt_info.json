@@ -1,0 +1,7 @@
+{
+  "server": "<mqtt_server>",
+  "port": 10000,
+  "username": "<username>",
+  "password": "<password>",
+  "topic": "<topic>"
+}
