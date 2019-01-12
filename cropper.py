@@ -46,5 +46,5 @@ class Cropper(object):
 
         for i, parklot in enumerate(self.points):
             cropped = Cropper.extract_parklot(img, parklot, self.w, self.h)
-            predictions[i] = self.model.predict(cv2.cvtColor(cropped, cv2.COLOR_BGR2RGB))
+            predictions[i] = not bool(self.model.predict(cv2.cvtColor(cropped, cv2.COLOR_BGR2RGB)))
         return predictions

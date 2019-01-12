@@ -2,22 +2,24 @@ import json
 from paho.mqtt.client import Client
 
 
-client = Client()
+class MyMqttClient(Client):
+    def __init__(self, params):
+        super().__init__()
+        self.username_pw_set(params['username'], params['password'])
+        self.connect(params['server'], params['port'])
+        self.subscribe(params['topic'], 0)
+
+    def on_message(self, client, obj, msg):
+        print(msg.topic + " " + str(msg.qos) + " " + str(msg.payload))
 
 
-def on_message(client, obj, msg):
-    print(msg.topic + " " + str(msg.qos) + " " + str(msg.payload))
+if __name__ == "__main__":
 
-# Assign event callback
-client.on_message = on_message
+    with open("mqtt_info.json") as params:
+        mqtt_info = json.load(params)
 
-with open("mqtt_info.json") as params:
-    mqtt_info = json.load(params)
+    client = MyMqttClient(mqtt_info)
 
-client.username_pw_set(mqtt_info['username'], mqtt_info['password'])
-client.connect(mqtt_info['server'], mqtt_info['port'])
-client.subscribe(mqtt_info['topic'], 0)
-
-rc = 0
-while rc == 0:
-    rc = client.loop()
+    rc = 0
+    while rc == 0:
+        rc = client.loop()
