@@ -7,6 +7,7 @@ class MqttSender(Client):
         super().__init__(user_id)
 
         self.username_pw_set(params['username'], params['password'])
+        #self.tls_insecure_set(True)
         self.connect(params['server'], params['port'])
         self.mqtt_topic = params['topic']
 

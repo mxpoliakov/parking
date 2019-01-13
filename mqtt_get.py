@@ -7,6 +7,7 @@ class MyMqttClient(Client):
         super().__init__()
         self.username_pw_set(params['username'], params['password'])
         self.connect(params['server'], params['port'])
+       
         self.subscribe(params['topic'], 0)
 
     def on_message(self, client, obj, msg):

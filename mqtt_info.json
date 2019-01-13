@@ -1,7 +1,7 @@
 {
-  "server": "<mqtt_server>",
-  "port": 10000,
-  "username": "<username>",
-  "password": "<password>",
-  "topic": "<topic>"
+	"server": "m24.cloudmqtt.com",
+	"port": 19931,
+	"username": "cijtmtir",
+	"password": "O2t08bkdacPa",
+	"topic": "parking"
 }

@@ -33,7 +33,7 @@ class ParkingAssistant(object):
 
     def analyze(self, image):
 
-        splited = image.split("/")[-1].split("\\")[-1]
+        splited = image.split("/")[-1].split("\\")
         image_name = splited[-1]
 
         result = {}
@@ -84,7 +84,6 @@ class ParkingAssistant(object):
         self.thread = threading.Thread(target=self.check_to_take_next)
         self.thread.start()
         self.analyzer()
-
 
 pa = ParkingAssistant('mapping.json')
 pa.assist()
