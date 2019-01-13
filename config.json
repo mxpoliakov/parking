@@ -1,7 +1,12 @@
 {
+  "source_directory": "images_camera",
+  "parking_map": "mapping.json",
+  "delay": 10,
+  "mqtt": {
 	"server": "m24.cloudmqtt.com",
 	"port": 19931,
 	"username": "cijtmtir",
 	"password": "O2t08bkdacPa",
 	"topic": "parking"
+  }
 }

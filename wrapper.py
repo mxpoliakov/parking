@@ -1,30 +1,31 @@
-from model import Model
-from cropper import Cropper
+from utils.model import Model
+from utils.cropper import Cropper
 import json
 from time import time, localtime, strftime
 import glob
 import os
 import threading
 
-from mqtt_send import MqttSender
+from utils.mqtt import MqttSender
 
 
 class ParkingAssistant(object):
 
-    def __init__(self, config):
-        self.cropper = Cropper(config, Model('model.h5'))
+    def __init__(self, config_file):
 
-        with open("mqtt_info.json") as params:
-            mqtt_info = json.load(params)
+        config = json.loads(open(config_file).read())
 
-        self.mqtt = MqttSender("sender", mqtt_info)
+        self.cropper = Cropper(config['parking_map'], Model('model.h5'))
+
+        self.mqtt = MqttSender("sender", config['mqtt'])
 
         self.predictions = None
         self.take_next = False
-        self.last_take_time = time()-6
         self.thread = None
-        self.delay = 10
-        self.dir_name = "images_camera"
+
+        self.delay = config['delay']
+        self.last_take_time = time()-self.delay
+        self.dir_name = config['source_directory']
 
     def predict(self, image):
         self.predictions = self.cropper.predict(image)
@@ -85,5 +86,7 @@ class ParkingAssistant(object):
         self.thread.start()
         self.analyzer()
 
-pa = ParkingAssistant('mapping.json')
-pa.assist()
+
+if __name__ == "__main__":
+    pa = ParkingAssistant('config.json')
+    pa.assist()
