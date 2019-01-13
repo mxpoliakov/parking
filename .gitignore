@@ -2,9 +2,10 @@ images/*
 !images/.gitkeep 
 .ipynb_checkpoints
 parklots
+images_camera/*
 !images_camera/.gitkeep
 .idea
 .vscode
-images_camera/*
+
 __pycache__
 utils/__pycache__
