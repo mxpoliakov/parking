@@ -13,7 +13,7 @@ function onConnect() {
 
 function onMessageArrive(message) {
 	let json = JSON.parse(message.payloadString);
-
+	document.querySelector('.time').innerHTML = json.metadata.processing_start_time;
 	Object.keys(json.parking_places).forEach(function(key) {
 		document.querySelector('.pl_' + key.toString()).classList.remove('free');
 		if (json.parking_places[key]) {

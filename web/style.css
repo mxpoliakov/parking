@@ -16,6 +16,11 @@ body {
 	background-color: forestgreen;
 }
 
+.time {
+	margin-right: 30px;
+	font-size: 18px;
+	font-family: 'Courier New', Courier, monospace;
+}
 .grid-container {
 	display: grid;
 	background-color: #dddddd;
