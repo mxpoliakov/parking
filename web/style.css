@@ -1,0 +1,124 @@
+body{
+    margin: 0;
+    background-color: gray;
+}
+
+.pl{
+    border: 1px solid black;
+    background-color: #c0c0c0;
+}
+
+.free{
+    background-color: forestgreen;
+}
+
+.grid-container {
+    margin: 0 auto;
+    display: grid;
+    border: 2px solid white;
+    width: 720px;
+    grid-template-columns: 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px;
+    grid-template-rows: 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px;
+}
+
+.pl_30 { grid-area: 1 / 1 / 3 / 2; }
+.pl_94 { grid-area: 1 / 2 / 3 / 3; }
+.pl_17 { grid-area: 12 / 1 / 13 / 3; }
+.pl_9 { grid-area: 11 / 1 / 12 / 3; }
+.pl_10 { grid-area: 10 / 1 / 11 / 3; }
+.pl_11 { grid-area: 9 / 1 / 10 / 3; }
+.pl_12 { grid-area: 8 / 1 / 9 / 3; }
+.pl_13 { grid-area: 7 / 1 / 8 / 3; }
+.pl_14 { grid-area: 6 / 1 / 7 / 3; }
+.pl_15 { grid-area: 5 / 1 / 6 / 3; }
+.pl_16 { grid-area: 4 / 1 / 5 / 3; }
+.pl_29 { grid-area: 1 / 3 / 3 / 4; }
+.pl_28 { grid-area: 1 / 4 / 3 / 5; }
+.pl_27 { grid-area: 1 / 5 / 3 / 6; }
+.pl_26 { grid-area: 1 / 6 / 3 / 7; }
+.pl_25 { grid-area: 1 / 7 / 3 / 8; }
+.pl_24 { grid-area: 1 / 8 / 3 / 9; }
+.pl_23 { grid-area: 1 / 9 / 3 / 10; }
+.pl_20 { grid-area: 1 / 12 / 3 / 13; }
+.pl_19 { grid-area: 1 / 13 / 3 / 14; }
+.pl_18 { grid-area: 1 / 14 / 3 / 15; }
+.pl_31 { grid-area: 1 / 16 / 3 / 17; }
+.pl_32 { grid-area: 1 / 17 / 3 / 18; }
+.pl_33 { grid-area: 1 / 18 / 3 / 19; }
+.pl_34 { grid-area: 1 / 19 / 3 / 20; }
+.pl_35 { grid-area: 1 / 20 / 3 / 21; }
+.pl_36 { grid-area: 1 / 21 / 3 / 22; }
+.pl_37 { grid-area: 1 / 22 / 3 / 23; }
+.pl_100 { grid-area: 7 / 23 / 8 / 25; }
+.pl_99 { grid-area: 6 / 23 / 7 / 25; }
+.pl_98 { grid-area: 5 / 23 / 6 / 25; }
+.pl_97 { grid-area: 4 / 23 / 5 / 25; }
+.pl_96 { grid-area: 3 / 23 / 4 / 25; }
+.pl_21 { grid-area: 1 / 10 / 3 / 11; }
+.pl_22 { grid-area: 1 / 11 / 3 / 12; }
+.pl_8 { grid-area: 17 / 10 / 19 / 11; }
+.pl_7 { grid-area: 17 / 9 / 19 / 10; }
+.pl_6 { grid-area: 17 / 8 / 19 / 9; }
+.pl_5 { grid-area: 17 / 7 / 19 / 8; }
+.pl_4 { grid-area: 17 / 6 / 19 / 7; }
+.pl_3 { grid-area: 17 / 5 / 19 / 6; }
+.pl_2 { grid-area: 17 / 4 / 19 / 5; }
+.pl_1 { grid-area: 17 / 3 / 19 / 4; }
+.pl_0 { grid-area: 17 / 2 / 19 / 3; }
+.pl_61 { grid-area: 11 / 14 / 13 / 15; }
+.pl_64 { grid-area: 13 / 13 / 15 / 14; }
+.pl_65 { grid-area: 13 / 12 / 15 / 13; }
+.pl_66 { grid-area: 13 / 11 / 15 / 12; }
+.pl_67 { grid-area: 13 / 10 / 15 / 11; }
+.pl_68 { grid-area: 13 / 9 / 15 / 10; }
+.pl_69 { grid-area: 13 / 8 / 15 / 9; }
+.pl_70 { grid-area: 13 / 7 / 15 / 8; }
+.pl_71 { grid-area: 13 / 6 / 15 / 7; }
+.pl_60 { grid-area: 11 / 13 / 13 / 14; }
+.pl_59 { grid-area: 11 / 12 / 13 / 13; }
+.pl_62 { grid-area: 11 / 11 / 13 / 12; }
+.pl_58 { grid-area: 11 / 10 / 13 / 11; }
+.pl_57 { grid-area: 11 / 9 / 13 / 10; }
+.pl_56 { grid-area: 11 / 8 / 13 / 9; }
+.pl_55 { grid-area: 11 / 7 / 13 / 8; }
+.pl_54 { grid-area: 11 / 6 / 13 / 7; }
+.pl_95 { grid-area: 11 / 5 / 13 / 6; }
+.pl_53 { grid-area: 7 / 14 / 9 / 15; }
+.pl_52 { grid-area: 7 / 13 / 9 / 14; }
+.pl_51 { grid-area: 7 / 12 / 9 / 13; }
+.pl_50 { grid-area: 7 / 11 / 9 / 12; }
+.pl_49 { grid-area: 7 / 10 / 9 / 11; }
+.pl_48 { grid-area: 7 / 9 / 9 / 10; }
+.pl_63 { grid-area: 7 / 7 / 9 / 8; }
+.pl_47 { grid-area: 7 / 6 / 9 / 7; }
+.pl_72 { grid-area: 7 / 5 / 9 / 6; }
+.pl_73 { grid-area: 5 / 5 / 7 / 6; }
+.pl_38 { grid-area: 5 / 6 / 7 / 7; }
+.pl_39 { grid-area: 5 / 7 / 7 / 8; }
+.pl_40 { grid-area: 5 / 8 / 7 / 9; }
+.pl_41 { grid-area: 5 / 9 / 7 / 10; }
+.pl_42 { grid-area: 5 / 10 / 7 / 11; }
+.pl_43 { grid-area: 5 / 11 / 7 / 12; }
+.pl_44 { grid-area: 5 / 12 / 7 / 13; }
+.pl_45 { grid-area: 5 / 13 / 7 / 14; }
+.pl_46 { grid-area: 5 / 14 / 7 / 15; }
+.pl_74 { grid-area: 7 / 16 / 9 / 17; }
+.pl_75 { grid-area: 7 / 17 / 9 / 18; }
+.pl_76 { grid-area: 5 / 16 / 7 / 17; }
+.pl_77 { grid-area: 5 / 17 / 7 / 18; }
+.pl_84 { grid-area: 7 / 18 / 9 / 19; }
+.pl_80 { grid-area: 7 / 19 / 9 / 20; }
+.pl_81 { grid-area: 7 / 20 / 9 / 21; }
+.pl_78 { grid-area: 5 / 18 / 7 / 19; }
+.pl_79 { grid-area: 5 / 19 / 7 / 20; }
+.pl_82 { grid-area: 5 / 20 / 7 / 21; }
+.pl_83 { grid-area: 5 / 21 / 7 / 22; }
+.pl_85 { grid-area: 13 / 16 / 15 / 17; }
+.pl_86 { grid-area: 13 / 17 / 15 / 18; }
+.pl_87 { grid-area: 11 / 16 / 13 / 17; }
+.pl_88 { grid-area: 11 / 17 / 13 / 18; }
+.pl_89 { grid-area: 11 / 18 / 13 / 19; }
+.pl_92 { grid-area: 13 / 19 / 15 / 20; }
+.pl_93 { grid-area: 13 / 20 / 15 / 21; }
+.pl_90 { grid-area: 11 / 19 / 13 / 20; }
+.pl_91 { grid-area: 11 / 20 / 13 / 21; }
