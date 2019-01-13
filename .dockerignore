@@ -1,0 +1,9 @@
+.git
+.ipynb_checkpoints
+parklots
+.idea
+.vscode
+web
+__pycache__
+utils/__pycache__
+model_test.ipynb
