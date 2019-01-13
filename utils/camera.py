@@ -32,14 +32,14 @@ class Camera:
                 break
             i += 1
             if file_to_copy[-4:] != ".jpg":
-                print("bad format")
+                print("Bad format")
                 continue
 
             copyfile(os.path.join(self.src_dir, file_to_copy),
                      os.path.join(self.dst_dir, file_to_copy))
 
     def start(self):
-        print("start camera")
+        print("Start camera")
         self.thread = threading.Thread(target=self.check_to_make_photo)
         self.thread.start()
         self.photographer()
