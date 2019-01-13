@@ -5,6 +5,7 @@ from time import time, localtime, strftime
 import glob
 import os
 import threading
+import cv2
 
 from utils.mqtt import MqttSender
 
@@ -32,6 +33,27 @@ class ParkingAssistant(object):
 
         return self.predictions
 
+    def visualize(self, image, parklots):
+        visualized_dir = self.dir_name+"/../visualized/"
+        if not os.path.exists(visualized_dir):
+            os.makedirs(visualized_dir)
+        output_file = visualized_dir+image[:-4]+"_visualized"+image[-4:]
+
+        image = cv2.imread(self.dir_name+"/"+image)
+        for index in range(2):
+            for i in range(len(self.cropper.points)):
+                if parklots[i]:
+                    if index: continue
+                    color = (0, 255, 0)
+                else:
+                    if not index: continue
+                    color = (0, 0, 255)
+
+                for j in range(4):
+                    cv2.line(image, tuple(self.cropper.points[i][j]), tuple(self.cropper.points[i][(j + 1) % 4]), color, 10)
+
+        cv2.imwrite(output_file, image)
+
     def analyze(self, image):
 
         splited = image.split("/")[-1].split("\\")
@@ -53,6 +75,7 @@ class ParkingAssistant(object):
                               "processing_start_time": strftime('%Y-%m-%d %H:%M:%S', localtime(start_time))}
 
         self.mqtt.send(json.dumps(result))
+        # self.visualize(image_name, predicts)
 
     def check_to_take_next(self):
         while True:
