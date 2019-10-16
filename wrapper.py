@@ -89,11 +89,10 @@ class ParkingAssistant(object):
             self.last_take_time = time()
 
             list_of_files = glob.glob('{}/*.jpg'.format(self.dir_name))  # * means all if need specific format then *.csv
-            try:
-                latest_file_in_dir = max(list_of_files, key=os.path.getctime)
-            except ValueError as e:
+            if not list_of_files:
                 print('No file')
                 continue
+            latest_file_in_dir = max(list_of_files, key=os.path.getctime)
             file_name = latest_file_in_dir.split('\\')[-1]
             if last_file == file_name:
                 print('No new file')
