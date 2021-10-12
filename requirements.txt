@@ -1,6 +1,6 @@
 numpy
 matplotlib
-opencv-python==3.3.0.9
+opencv-python==4.2.0.32
 tensorflow
 keras
 paho-mqtt
